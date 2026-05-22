@@ -6,9 +6,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>PdiNoob • Official Links</title>
+<title>PdiNoob • Official Hub</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 <style>
 
@@ -16,315 +22,205 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Poppins;
+font-family:"Space Grotesk","Inter",sans-serif;
 }
 
 body{
-
 height:100vh;
-
 overflow:hidden;
-
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
+background:radial-gradient(circle at top,#1f1f1f,#070707 55%,#000);
 color:white;
-
-background:
-
-radial-gradient(circle at center,
-#303030,
-#111 35%,
-#050505 70%,
-#000);
-
 position:relative;
-
 }
 
+/* background glow */
 body::before{
-
 content:"";
-
 position:absolute;
-
-width:120vw;
-
-height:120vw;
-
-background:
-
-radial-gradient(
-circle,
-rgba(255,255,255,.12),
-transparent 30%
-);
-
+inset:-50%;
+background:conic-gradient(from 0deg,transparent,rgba(255,255,255,.08),transparent,rgba(255,255,255,.03));
+animation:spin 18s linear infinite;
 filter:blur(120px);
-
-animation:
-bg 10s infinite alternate;
-
 }
 
-@keyframes bg{
-
-100%{
-
-transform:
-scale(1.2)
-translateY(-40px);
-
+@keyframes spin{
+100%{transform:rotate(360deg);}
 }
 
-}
-
+/* loader */
 .loader{
-
 position:fixed;
-
 inset:0;
-
 background:black;
-
 display:flex;
-
 flex-direction:column;
-
 justify-content:center;
-
 align-items:center;
-
 z-index:999;
-
-animation:
-close 1s ease 4s forwards;
-
+animation:fadeOut 3.5s forwards;
 }
 
 .loader img{
-
-width:260px;
-
-animation:
-float 3s infinite,
-glow 2s infinite alternate;
-
+width:200px;
+animation:float 3s infinite,glow 2s infinite alternate;
 }
 
 .loader h1{
-
-margin-top:30px;
-
-font-size:42px;
-
+font-size:48px;
 letter-spacing:8px;
-
+font-weight:700;
+margin-top:20px;
 }
 
 .loader p{
-
-opacity:.5;
-
+opacity:.4;
+letter-spacing:4px;
 }
 
-@keyframes close{
-
-to{
-
-opacity:0;
-
-visibility:hidden;
-
-}
-
-}
-
-@keyframes glow{
-
-from{
-
-filter:
-drop-shadow(0 0 20px white);
-
-}
-
-to{
-
-filter:
-drop-shadow(0 0 100px white);
-
-}
-
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden;}
 }
 
 @keyframes float{
-
-50%{
-
-transform:
-translateY(-15px);
-
+50%{transform:translateY(-14px);}
 }
 
+@keyframes glow{
+from{filter:drop-shadow(0 0 20px white);}
+to{filter:drop-shadow(0 0 80px white);}
 }
 
+/* card */
 .card{
-
 position:relative;
-
-z-index:2;
-
-width:min(560px,92vw);
-
-padding:36px;
-
-border-radius:36px;
-
+z-index:5;
+width:min(540px,92vw);
+padding:44px;
+border-radius:42px;
 text-align:center;
 
-background:
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(45px);
 
-linear-gradient(
-180deg,
-rgba(255,255,255,.08),
-rgba(255,255,255,.03)
-);
+border:1px solid rgba(255,255,255,.1);
+box-shadow:0 0 120px rgba(255,255,255,.06);
 
-backdrop-filter:
-
-blur(30px);
-
-border:
-
-1px solid rgba(255,255,255,.1);
-
-box-shadow:
-
-0 0 150px rgba(255,255,255,.1);
-
+animation:pop .9s ease;
 }
 
-.profile{
+@keyframes pop{
+from{opacity:0;transform:translateY(40px) scale(.92);}
+to{opacity:1;}
+}
 
-width:min(180px,38vw);
-
+/* avatar */
+.avatar{
+display:inline-flex;
+padding:8px;
 border-radius:50%;
-
-box-shadow:
-
-0 0 60px white;
-
+background:linear-gradient(45deg,#fff,#555,#fff);
+animation:rotate 10s linear infinite;
 }
 
+.avatar img{
+width:170px;
+border-radius:50%;
+display:block;
+background:black;
+}
+
+@keyframes rotate{
+100%{transform:rotate(360deg);}
+}
+
+/* title */
 .title{
-
-margin-top:18px;
-
-font-size:clamp(36px,6vw,62px);
-
-font-weight:900;
-
+margin-top:22px;
+font-size:54px;
+font-weight:700;
+letter-spacing:1px;
 }
 
 .bio{
-
-margin-top:8px;
-
-margin-bottom:26px;
-
-opacity:.7;
-
-font-size:clamp(14px,2vw,20px);
-
+margin-top:10px;
+margin-bottom:30px;
+opacity:.65;
+font-size:17px;
+font-weight:400;
 }
 
+/* links */
 .link{
-
-display:block;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:14px;
 
 margin:14px 0;
+padding:20px;
 
-padding:18px;
-
-border-radius:20px;
-
+border-radius:22px;
 text-decoration:none;
 
-font-size:clamp(18px,3vw,24px);
+font-size:20px;
+font-weight:600;
 
 color:white;
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
 
-background:
+transition:.35s;
+position:relative;
+overflow:hidden;
+}
 
-linear-gradient(
-90deg,
-#111,
-#1c1c1c
-);
+.link::before{
+content:"";
+position:absolute;
+left:-200px;
+top:0;
+width:160px;
+height:100%;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+transform:skewX(-30deg);
+}
 
-transition:.3s;
-
+.link:hover::before{
+left:140%;
+transition:1s;
 }
 
 .link:hover{
-
-transform:
-
-translateY(-4px)
-scale(1.03);
-
+transform:translateY(-5px) scale(1.03);
 background:white;
-
 color:black;
-
-box-shadow:
-
-0 0 60px white;
-
+box-shadow:0 0 80px rgba(255,255,255,.35);
 }
 
+.link i{
+font-size:26px;
+}
+
+/* colors */
+.fa-tiktok{color:#ff0050;}
+.fa-youtube{color:#ff0000;}
+.fa-kickstarter{color:#53fc18;}
+.fa-discord{color:#5865F2;}
+
+/* credit */
 .credit{
-
-margin-top:22px;
-
-opacity:.45;
-
-font-size:13px;
-
+margin-top:26px;
+font-size:12px;
 letter-spacing:3px;
-
+opacity:.45;
 }
 
 .credit span{
-
-font-weight:900;
-
-}
-
-@media(max-height:850px){
-
-.card{
-
-transform:
-scale(.88);
-
-}
-
-}
-
-@media(max-height:720px){
-
-.card{
-
-transform:
-scale(.78);
-
-}
-
+font-weight:700;
+opacity:.9;
 }
 
 </style>
@@ -334,71 +230,46 @@ scale(.78);
 <body>
 
 <div class="loader">
-
 <img src="logo.png">
-
-<h1>PDINOOB</h1>
-
-<p>ENTERING...</p>
-
+<h1>PdiNoob</h1>
+<p>Loading experience...</p>
 </div>
 
 <div class="card">
 
-<img src="logo.png" class="profile">
+<div class="avatar">
+<img src="logo.png">
+</div>
 
 <div class="title">
-
 PdiNoob
-
 </div>
 
 <div class="bio">
-
-Gaming • Streams • Content
-
+Creating worlds through gaming & live entertainment
 </div>
 
-<a class="link"
-href="https://www.tiktok.com/@pdinoob"
-target="_blank">
-
-🎵 TikTok
-
+<a class="link" href="https://www.tiktok.com/@pdinoob" target="_blank">
+<i class="fa-brands fa-tiktok"></i> Watch Short Content
 </a>
 
-<a class="link"
-href="https://www.youtube.com/@PdiNoob3"
-target="_blank">
-
-▶ YouTube
-
+<a class="link" href="https://www.youtube.com/@PdiNoob3" target="_blank">
+<i class="fa-brands fa-youtube"></i> Full Videos & Streams
 </a>
 
-<a class="link"
-href="https://kick.com/pdinoob"
-target="_blank">
-
-🟢 Kick
-
+<a class="link" href="https://kick.com/pdinoob" target="_blank">
+<i class="fa-brands fa-kickstarter"></i> Live Streaming
 </a>
 
-<a class="link"
-href="https://discord.gg/sk5eSzhbD"
-target="_blank">
-
-💬 Discord
-
+<a class="link" href="https://discord.gg/sk5eSzhbD" target="_blank">
+<i class="fa-brands fa-discord"></i> Join the Community
 </a>
 
 <div class="credit">
-
-Created by <span>ZaDAV1D</span>
-
+Built with passion by <span>ZaDAV1D</span>
 </div>
 
 </div>
 
 </body>
-
 </html>
