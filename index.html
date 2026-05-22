@@ -20,80 +20,64 @@ font-family:Poppins;
 }
 
 body{
-background:
-radial-gradient(circle at top,#2d2d2d 0%,#111 20%,#050505 50%,black 100%);
-overflow:hidden;
+
 height:100vh;
+
+overflow:hidden;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
 color:white;
+
+background:
+
+radial-gradient(circle at center,
+#303030,
+#111 35%,
+#050505 70%,
+#000);
+
 position:relative;
+
 }
 
 body::before{
+
 content:"";
-position:fixed;
-top:-30%;
-left:-20%;
-width:160%;
-height:160%;
+
+position:absolute;
+
+width:120vw;
+
+height:120vw;
 
 background:
-radial-gradient(circle,rgba(255,255,255,.15),transparent 25%),
-radial-gradient(circle at 30% 20%,rgba(255,255,255,.06),transparent 40%),
-radial-gradient(circle at 70% 70%,rgba(255,255,255,.08),transparent 30%);
+
+radial-gradient(
+circle,
+rgba(255,255,255,.12),
+transparent 30%
+);
 
 filter:blur(120px);
 
 animation:
-movebg 12s infinite alternate;
-
-z-index:-3;
-}
-
-body::after{
-
-content:"";
-
-position:fixed;
-
-width:100%;
-
-height:100%;
-
-background:
-radial-gradient(white 1px,transparent 1px);
-
-background-size:42px 42px;
-
-opacity:.06;
-
-animation:
-stars 35s linear infinite;
-
-z-index:-2;
+bg 10s infinite alternate;
 
 }
 
-@keyframes movebg{
-
-0%{
-transform:
-translate(-5%,-5%)
-scale(1);
-}
+@keyframes bg{
 
 100%{
+
 transform:
-translate(5%,5%)
-scale(1.25);
-}
+scale(1.2)
+translateY(-40px);
 
-}
-
-@keyframes stars{
-
-to{
-transform:
-translateY(100px);
 }
 
 }
@@ -102,52 +86,48 @@ translateY(100px);
 
 position:fixed;
 
-width:100%;
-
-height:100%;
+inset:0;
 
 background:black;
 
 display:flex;
 
+flex-direction:column;
+
 justify-content:center;
 
 align-items:center;
 
-flex-direction:column;
-
 z-index:999;
 
 animation:
-close 1.2s ease 4s forwards;
+close 1s ease 4s forwards;
 
 }
 
 .loader img{
 
-width:320px;
+width:260px;
 
 animation:
-glow 2s infinite alternate,
-float 3s infinite;
+float 3s infinite,
+glow 2s infinite alternate;
 
 }
 
 .loader h1{
 
-margin-top:35px;
+margin-top:30px;
 
 font-size:42px;
 
-font-weight:900;
-
-letter-spacing:10px;
+letter-spacing:8px;
 
 }
 
 .loader p{
 
-opacity:.6;
+opacity:.5;
 
 }
 
@@ -168,14 +148,14 @@ visibility:hidden;
 from{
 
 filter:
-drop-shadow(0 0 25px white);
+drop-shadow(0 0 20px white);
 
 }
 
 to{
 
 filter:
-drop-shadow(0 0 120px white);
+drop-shadow(0 0 100px white);
 
 }
 
@@ -192,137 +172,59 @@ translateY(-15px);
 
 }
 
-.main{
-
-width:100%;
-
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-}
-
-.ring{
-
-position:absolute;
-
-border-radius:50%;
-
-animation:
-spin 20s linear infinite;
-
-}
-
-.r1{
-
-width:1100px;
-
-height:1100px;
-
-border:
-1px solid rgba(255,255,255,.08);
-
-box-shadow:
-0 0 280px rgba(255,255,255,.18);
-
-}
-
-.r2{
-
-width:760px;
-
-height:760px;
-
-border:
-2px solid rgba(255,255,255,.12);
-
-animation-direction:reverse;
-
-}
-
-@keyframes spin{
-
-to{
-
-transform:
-rotate(360deg);
-
-}
-
-}
-
 .card{
 
-width:620px;
+position:relative;
 
-padding:60px;
+z-index:2;
+
+width:min(560px,92vw);
+
+padding:36px;
+
+border-radius:36px;
 
 text-align:center;
 
 background:
+
 linear-gradient(
 180deg,
 rgba(255,255,255,.08),
 rgba(255,255,255,.03)
 );
 
-backdrop-filter:blur(40px);
+backdrop-filter:
+
+blur(30px);
 
 border:
-1px solid rgba(255,255,255,.10);
 
-border-radius:42px;
+1px solid rgba(255,255,255,.1);
 
 box-shadow:
-0 0 220px rgba(255,255,255,.12);
 
-animation:
-open 1.3s;
-
-}
-
-@keyframes open{
-
-from{
-
-opacity:0;
-
-transform:
-translateY(60px);
-
-}
+0 0 150px rgba(255,255,255,.1);
 
 }
 
 .profile{
 
-width:260px;
+width:min(180px,38vw);
 
-border-radius:100%;
+border-radius:50%;
 
 box-shadow:
-0 0 90px white;
 
-transition:.4s;
-
-}
-
-.profile:hover{
-
-transform:
-scale(1.06);
+0 0 60px white;
 
 }
 
 .title{
 
-margin-top:28px;
+margin-top:18px;
 
-font-size:68px;
+font-size:clamp(36px,6vw,62px);
 
 font-weight:900;
 
@@ -330,13 +232,13 @@ font-weight:900;
 
 .bio{
 
-font-size:20px;
+margin-top:8px;
 
-opacity:.65;
+margin-bottom:26px;
 
-margin-top:10px;
+opacity:.7;
 
-margin-bottom:45px;
+font-size:clamp(14px,2vw,20px);
 
 }
 
@@ -344,53 +246,56 @@ margin-bottom:45px;
 
 display:block;
 
-margin:20px;
+margin:14px 0;
 
-padding:24px;
+padding:18px;
 
-border-radius:26px;
+border-radius:20px;
 
 text-decoration:none;
 
+font-size:clamp(18px,3vw,24px);
+
 color:white;
 
-font-size:28px;
-
 background:
+
 linear-gradient(
 90deg,
 #111,
-#1a1a1a
+#1c1c1c
 );
 
-transition:.35s;
+transition:.3s;
 
 }
 
 .link:hover{
 
 transform:
-translateY(-6px)
-scale(1.04);
+
+translateY(-4px)
+scale(1.03);
 
 background:white;
 
 color:black;
 
 box-shadow:
-0 0 80px white;
+
+0 0 60px white;
 
 }
 
 .credit{
 
-margin-top:42px;
+margin-top:22px;
 
 opacity:.45;
 
-font-size:16px;
+font-size:13px;
 
-letter-spacing:4px;
+letter-spacing:3px;
 
 }
 
@@ -400,47 +305,23 @@ font-weight:900;
 
 }
 
-@media(max-width:700px){
-
-body{
-
-overflow:auto;
-
-}
+@media(max-height:850px){
 
 .card{
 
-width:92%;
-
-padding:35px;
-
-margin:50px 0;
+transform:
+scale(.88);
 
 }
 
-.title{
-
-font-size:44px;
-
 }
 
-.profile{
+@media(max-height:720px){
 
-width:180px;
+.card{
 
-}
-
-.link{
-
-font-size:22px;
-
-padding:20px;
-
-}
-
-.loader img{
-
-width:200px;
+transform:
+scale(.78);
 
 }
 
@@ -461,12 +342,6 @@ width:200px;
 <p>ENTERING...</p>
 
 </div>
-
-<div class="main">
-
-<div class="ring r1"></div>
-
-<div class="ring r2"></div>
 
 <div class="card">
 
@@ -519,8 +394,6 @@ target="_blank">
 <div class="credit">
 
 Created by <span>ZaDAV1D</span>
-
-</div>
 
 </div>
 
